@@ -1,1 +1,21 @@
-<p>contact-page works!</p>
+<div class="content-box">
+  <div *ngIf="listing;else showWarning">
+    <h3>Send the owner a Message:</h3>
+    <div>
+      <label for="email">Your email Address</label>
+      <input type="email" name="email" id="email" [(ngModel)]="email"/>
+    </div>
+    <div>
+      <label for="message">Your Message here</label>
+      <textarea name="message" id="message" cols="30" rows="10"
+                [(ngModel)]="message">
+    </textarea>
+    </div>
+    <button (click)="sendMessage()">Send</button>
+  </div>
+  <ng-template #showWarning>
+    <div>
+      No Content with the {{id}} id
+    </div>
+  </ng-template>
+</div>
