@@ -9,7 +9,7 @@ import {fakeListings} from "@app/fake-data";
 })
 export class MyListingsPageComponent implements OnInit {
 
-  private _listings: Listing[] = [];
+  listings: Listing[] = [];
 
   constructor() {
   }
@@ -18,15 +18,8 @@ export class MyListingsPageComponent implements OnInit {
     this.listings = fakeListings;
   }
 
-  public onDeleteClicked(listingId: string): void {
+  public onDeleteClicked(listingId: string | null): void {
     alert(`Deleting your listing with id ${listingId}`)
   }
 
-  public get listings(): Listing[] {
-    return this._listings;
-  }
-
-  public set listings(value: Listing[]) {
-    this._listings = value;
-  }
 }

@@ -1,50 +1,37 @@
-import {Component, OnInit} from '@angular/core';
-import {Router} from "@angular/router";
+import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
+import { Listing } from "@app/types";
 
 @Component({
-  selector: 'app-listing-data-form',
-  templateUrl: './listing-data-form.component.html',
-  styleUrls: ['./listing-data-form.component.css']
+  selector: "app-listing-data-form",
+  templateUrl: "./listing-data-form.component.html",
+  styleUrls: ["./listing-data-form.component.css"],
 })
 export class ListingDataFormComponent implements OnInit {
+  name: string = "";
+  description: string = "";
+  price: number | undefined;
 
-  private _name: string = '';
-  private _description: string = '';
-  private _price: string = '';
+  @Input() submitButtonText: String = "";
+  @Input() currentName: string = "";
+  @Input() currentDescription: string = "";
+  @Input() currentPrice: number | undefined;
 
-  constructor(private router: Router) {
-  }
+  @Output() onSubmit = new EventEmitter<Listing>();
+
+  constructor() {}
 
   ngOnInit(): void {
+    this.name = this.currentName;
+    this.description = this.currentDescription;
+    this.price = this.currentPrice;
   }
 
-  public onSubmit(): void {
-    alert("Creating a new Listing...");
-    this.router.navigateByUrl('/my-listings').then(r => console.log(r));
+  public onButtonClicked(): void {
+    this.onSubmit.emit({
+      id: "",
+      name: this.name,
+      description: this.description,
+      price: this.price,
+    });
   }
-
-  public get name(): string {
-    return this._name;
-  }
-
-  public set name(value: string) {
-    this._name = value;
-  }
-
-  public get description(): string {
-    return this._description;
-  }
-
-  public set description(value: string) {
-    this._description = value;
-  }
-
-  public get price(): string {
-    return this._price;
-  }
-
-  public set price(value: string) {
-    this._price = value;
-  }
-
 }

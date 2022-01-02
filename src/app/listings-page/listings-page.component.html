@@ -1,7 +1,7 @@
 <div>
   <div class="content-box" *ngFor="let listing of listings">
     <a routerLink="/listings/{{ listing.id }}">
-      <h3>{{ listing.name }} - {{ listing.price }}</h3>
+      <h3>{{ listing.name }} &hyphen; {{ listing.price }}</h3>
     </a>
   </div>
 </div>

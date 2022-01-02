@@ -8,15 +8,11 @@ import { Listing } from "@app/types";
   styleUrls: ["./listings-page.component.css"],
 })
 export class ListingsPageComponent implements OnInit {
-  private _listings: Listing[] = [];
+  listings: Listing[] = [];
 
   constructor() {}
 
   ngOnInit(): void {
-    this._listings = fakeListings;
-  }
-
-  public get listings() {
-    return this._listings;
+    this.listings = fakeListings;
   }
 }
