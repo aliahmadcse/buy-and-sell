@@ -3,4 +3,5 @@ export interface Listing {
   name: string;
   description: string;
   price: number | undefined;
+  view: number;
 }
