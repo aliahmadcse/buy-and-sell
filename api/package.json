@@ -17,6 +17,7 @@
     "@babel/runtime": "^7.16.7",
     "@hapi/boom": "^9.1.4",
     "@hapi/hapi": "^20.2.1",
+    "mysql2": "^2.3.3",
     "nodemon": "^2.0.15",
     "uuid": "^8.3.2"
   }

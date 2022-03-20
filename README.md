@@ -10,9 +10,10 @@ The project was built using node version 16.13.0. Can't guarantee working for an
 
 - `cd` into the `api` directory
 - Fetch the dependencies using `npm i`
+- Build the database using `build.sql` in the API resources
 - Run the server using `npm run dev`
 
-## Steps to configure the Backend API
+## Steps to configure the FrontEnd
 
 - Install the dependencies using `npm i`
 - For starting angular development server, use the command `npm run dev`
