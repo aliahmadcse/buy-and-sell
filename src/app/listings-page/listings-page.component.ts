@@ -10,9 +10,11 @@ import { Listing } from "@app/types";
 export class ListingsPageComponent implements OnInit {
   listings: Listing[] = [];
 
-  constructor(private listingsService: ListingsService) {}
+  constructor(private listingsService: ListingsService) { }
 
   ngOnInit(): void {
-    this.listings = this.listingsService.getListings();
+    this.listingsService.getListings().subscribe(listings => {
+      this.listings = listings;
+    });
   }
 }
