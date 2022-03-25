@@ -17,4 +17,5 @@ export class ListingsPageComponent implements OnInit {
       this.listings = listings;
     });
   }
+
 }

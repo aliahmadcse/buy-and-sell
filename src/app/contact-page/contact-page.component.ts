@@ -19,6 +19,7 @@ export class ContactPageComponent implements OnInit {
 
   ngOnInit(): void {
     this.id = this.route.snapshot.paramMap.get("id") ?? "";
+    // TODO: get the listing from the server
     this.listing =
       fakeListings.find((listing) => listing.id === this.id);
     this.message = `I am interested in your ${this.listing?.name.toLowerCase()}!`;
