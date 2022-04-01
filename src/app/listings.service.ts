@@ -41,4 +41,8 @@ export class ListingsService {
   createNewListing(listing: Listing): Observable<Listing> {
     return this.http.post<Listing>('/api/listings', listing, httpOptions);
   }
+
+  editListing(listing: Listing): Observable<Listing> {
+    return this.http.post<Listing>(`/api/listings/${listing.id}`, listing, httpOptions);
+  }
 }
