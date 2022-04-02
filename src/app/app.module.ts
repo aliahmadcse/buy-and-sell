@@ -13,6 +13,9 @@ import { EditListingPageComponent } from "./edit-listing-page/edit-listing-page.
 import { FormsModule } from "@angular/forms";
 import { ListingDataFormComponent } from "./listing-data-form/listing-data-form.component";
 import { NavBarComponent } from "./nav-bar/nav-bar.component";
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+import { environment } from '@env/environment';
 
 @NgModule({
   declarations: [
@@ -26,7 +29,11 @@ import { NavBarComponent } from "./nav-bar/nav-bar.component";
     ListingDataFormComponent,
     NavBarComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
+  imports: [
+    BrowserModule, AppRoutingModule,
+    FormsModule, HttpClientModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireAuthModule,],
   providers: [],
   bootstrap: [AppComponent],
 })
