@@ -57,7 +57,18 @@ export class ListingsService {
   }
 
   deleteListing(id: string): Observable<any> {
-    return this.http.delete(`/api/listings/${id}`);
+    return new Observable<any>((observer) => {
+      this.angularFireAuth.user.subscribe(user => {
+        user && user.getIdToken().then(token => {
+          if (user && token) {
+            this.http.delete(`/api/listings/${id}`, httpOptionsWithAuthToken(token))
+              .subscribe(() => observer.next());
+          } else {
+            observer.next(undefined);
+          }
+        });
+      });
+    });
   }
 
   createNewListing(listing: Listing): Observable<Listing> {
@@ -73,9 +84,22 @@ export class ListingsService {
         });
       });
     });
-  }
+  };
 
   editListing(listing: Listing): Observable<Listing> {
-    return this.http.post<Listing>(`/api/listings/${listing.id}`, listing, httpOptions);
+    return new Observable<Listing>(observer => {
+      this.angularFireAuth.user.subscribe(user => {
+        user && user.getIdToken().then(token => {
+          if (user && token) {
+            this.http.post<Listing>(`/api/listings/${listing.id}`, listing, httpOptionsWithAuthToken(token))
+              .subscribe(listing => {
+                observer.next(listing);
+              });
+          } else {
+            observer.next(undefined);
+          }
+        });
+      });
+    });
   }
 }
