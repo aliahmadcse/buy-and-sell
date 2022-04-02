@@ -11,6 +11,7 @@ The project was built using node version 16.13.0. Can't guarantee working for an
 - `cd` into the `api` directory
 - Fetch the dependencies using `npm i`
 - Build the database using `build.sql` in the API resources
+- Create a project on firebase and your own **service account** credentials and place that `credentials.json` file under api folder.
 - Run the server using `npm run dev`
 
 ## Steps to configure the FrontEnd
