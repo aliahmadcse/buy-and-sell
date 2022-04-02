@@ -1,9 +1,14 @@
 <div id="page-wrap">
-  <div id="max-width-column">
+  <div id="max-width-column" *ngIf="angularFireAuth.user | async">
     <app-nav-bar></app-nav-bar>
 
     <div id="content-wrap">
       <router-outlet></router-outlet>
     </div>
+    <button (click)="signOutClicked()">Sign Out</button>
+  </div>
+  <div id="max-width-column" *ngIf="!(angularFireAuth.user | async)">
+    <h1>You need to sign in First</h1>
+    <button (click)="signInClicked()">Sign In</button>
   </div>
 </div>
