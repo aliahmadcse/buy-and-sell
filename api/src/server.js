@@ -6,6 +6,7 @@ import routes from "./routes";
 import { db } from "./database";
 import * as firebaseAdmin from "firebase-admin";
 import credentials from "../credentials.json";
+import inert from "@hapi/inert";
 
 firebaseAdmin.initializeApp({
   credential: firebaseAdmin.credential.cert(credentials)
@@ -19,6 +20,8 @@ const start = async () => {
     port: 8000,
     host: "localhost",
   });
+
+  await server.register(inert);
 
   routes.forEach((route) => server.route(route));
 
