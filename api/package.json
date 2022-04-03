@@ -8,7 +8,7 @@
   },
   "scripts": {
     "dev": "nodemon --exec npx babel-node src/server.js",
-    "build": "babel ./src --out-dir ../build",
+    "build": "babel ./src --out-dir ./build",
     "start": "node ./build/server.js"
   },
   "keywords": [],
