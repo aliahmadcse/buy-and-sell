@@ -1,14 +1,18 @@
 import mysql from "mysql2";
 
-const connection = mysql.createConnection({
-  host: "localhost",
-  user: "root",
-  password: "khoji",
-  database: "buy-and-sell",
-});
+let connection;
 
 export const db = {
-  connect: () => connection.connect(),
+  connect: () => {
+    connection = mysql.createConnection({
+      host: process.env.DB_HOST,
+      user: process.env.DB_USER,
+      password: process.env.DB_PASS,
+      database: process.env.DB_NAME,
+    });
+
+    connection.connect();
+  },
 
   query: (queryString, escapedValues) => {
     return new Promise((resolve, reject) => {
